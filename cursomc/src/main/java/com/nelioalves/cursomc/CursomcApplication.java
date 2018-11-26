@@ -29,7 +29,7 @@ public class CursomcApplication implements CommandLineRunner{
 	@Autowired
 	private EstadoRepository estadoRepository;
 	
-	@Autowired 
+	@Autowired
 	private CidadeRepository cidadeRepository;
 	
 	public static void main(String[] args) {

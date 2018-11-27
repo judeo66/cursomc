@@ -10,8 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.nelioalves.cursomc.domain.Categoria;
 import com.nelioalves.cursomc.domain.Cidade;
+import com.nelioalves.cursomc.domain.Cliente;
+import com.nelioalves.cursomc.domain.Endereco;
 import com.nelioalves.cursomc.domain.Estado;
 import com.nelioalves.cursomc.domain.Produto;
+import com.nelioalves.cursomc.domain.enuns.TipoCliente;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
 import com.nelioalves.cursomc.repositories.CidadeRepository;
 import com.nelioalves.cursomc.repositories.EstadoRepository;
@@ -68,5 +71,14 @@ public class CursomcApplication implements CommandLineRunner{
 		cidadeRepository.saveAll(Arrays.asList(c1, c2));
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
+		
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "123456879", TipoCliente.PESSOAFISICA);
+		
+		cli1.getTelefones().addAll(Arrays.asList("46383031", "71548473"));
+		
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38220834", cli1, c2);
+		
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 	}
 }
